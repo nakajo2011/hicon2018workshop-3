@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/nakajo2011/hicon2018workshop-3#readme",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "babel-register": "^6.26.0",
+    "lk-test-helpers": "^0.1.7",
+    "babel-preset-env": "^1.7.0",
     "openzeppelin-solidity": "^2.0.0"
   }
 }
