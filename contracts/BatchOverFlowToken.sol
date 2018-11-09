@@ -18,7 +18,7 @@ contract BatchOverFlowToken is ERC20Basic {
    */
   function batchTransfer(address[] _receivers, uint256 _value) public returns (bool) {
     uint cnt = _receivers.length;
-    uint256 amount = uint256(cnt) * _value;
+    uint256 amount = uint256(cnt).mul(_value);
     require(cnt > 0 && cnt <= 20);
     require(_value > 0 && _balances[msg.sender] >= amount);
     _balances[msg.sender] = _balances[msg.sender].sub(amount);

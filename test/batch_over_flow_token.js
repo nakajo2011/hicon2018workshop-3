@@ -1,3 +1,8 @@
+import lkTestHelpers from 'lk-test-helpers'
+
+const {
+  shouldFail
+} = lkTestHelpers(web3)
 const BatchOverFlowToken = artifacts.require("BatchOverFlowToken")
 contract('BatchOverFlowToken', function(accounts) {
   describe("init", () => {
@@ -23,6 +28,10 @@ contract('BatchOverFlowToken', function(accounts) {
       assert.equal(balance1.toNumber(), 100)
       assert.equal(balance2.toNumber(), 100)
       assert.equal(balance3.toNumber(), 100)
+    })
+    it("Do not overflow. it is failed", async () => {
+      const token = await BatchOverFlowToken.new()
+      await shouldFail.reverting(token.batchTransfer([accounts[1], accounts[2]], "0x8000000000000000000000000000000000000000000000000000000000000000"))
     })
   })
 })
